@@ -1,6 +1,6 @@
 ﻿namespace Formulaire
 {
-    partial class lbl_nom
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.recherche = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_Ajout
@@ -48,6 +49,7 @@
             this.btn_Ajout.TabIndex = 0;
             this.btn_Ajout.Text = "Ajouter";
             this.btn_Ajout.UseVisualStyleBackColor = true;
+            this.btn_Ajout.Click += new System.EventHandler(this.btn_Ajout_Click);
             // 
             // btn_modif
             // 
@@ -57,6 +59,7 @@
             this.btn_modif.TabIndex = 1;
             this.btn_modif.Text = "modifier";
             this.btn_modif.UseVisualStyleBackColor = true;
+            this.btn_modif.Click += new System.EventHandler(this.btn_modif_Click);
             // 
             // btn_supprimer
             // 
@@ -66,6 +69,7 @@
             this.btn_supprimer.TabIndex = 2;
             this.btn_supprimer.Text = "supprimer";
             this.btn_supprimer.UseVisualStyleBackColor = true;
+            this.btn_supprimer.Click += new System.EventHandler(this.btn_supprimer_Click);
             // 
             // btn_annuler
             // 
@@ -75,6 +79,7 @@
             this.btn_annuler.TabIndex = 3;
             this.btn_annuler.Text = "annuler";
             this.btn_annuler.UseVisualStyleBackColor = true;
+            this.btn_annuler.Click += new System.EventHandler(this.btn_annuler_Click);
             // 
             // btn_save
             // 
@@ -84,6 +89,7 @@
             this.btn_save.TabIndex = 4;
             this.btn_save.Text = "Enregistrer";
             this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // textBox1
             // 
@@ -120,16 +126,27 @@
             // recherche
             // 
             this.recherche.FormattingEnabled = true;
-            this.recherche.Location = new System.Drawing.Point(12, 55);
+            this.recherche.Location = new System.Drawing.Point(12, 81);
             this.recherche.Name = "recherche";
             this.recherche.Size = new System.Drawing.Size(201, 21);
             this.recherche.TabIndex = 9;
+            this.recherche.SelectedIndexChanged += new System.EventHandler(this.recherche_SelectedIndexChanged);
             // 
-            // lbl_nom
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "id";
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(247, 308);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.recherche);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -140,8 +157,9 @@
             this.Controls.Add(this.btn_supprimer);
             this.Controls.Add(this.btn_modif);
             this.Controls.Add(this.btn_Ajout);
-            this.Name = "lbl_nom";
+            this.Name = "Form1";
             this.Text = "Nom:";
+            this.Load += new System.EventHandler(this.lbl_nom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,6 +177,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox recherche;
+        private System.Windows.Forms.Label label3;
     }
 }
 
