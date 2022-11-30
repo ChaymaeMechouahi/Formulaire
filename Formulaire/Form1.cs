@@ -66,10 +66,13 @@ private void lbl_nom_Load(object sender, EventArgs e)
             recherche.Enabled = false;
         }
 
+        
+
         private void btn_supprimer_Click(object sender, EventArgs e)
         {
             condition = recherche.Text;
-            requete = "SELECT id FROM Etudiant WHERE Etudiant.id =" + condition;
+            string requete1 = "SELECT id FROM Etudiant" ;
+            int row = cmd.ExecuteReader(requete1);
             btn_Ajout.Enabled = false;
             btn_supprimer.Enabled = false;
             btn_annuler.Enabled = false;
