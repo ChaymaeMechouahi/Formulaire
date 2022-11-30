@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,17 +17,18 @@ namespace Formulaire
     {
         string condition;
         string requete;
-        MySqlCommand cmd;
+        SqlCommand cmd;
 
         public Form1()
         {
             InitializeComponent();
         }
-        MySqlConnection conn = new MySqlConnection("Server=localhost;Database=etudiant;Password=\"\";");
+        SqlConnection conn = new SqlConnection("");
             
 
 private void lbl_nom_Load(object sender, EventArgs e)
         {
+            this.etudiantTableAdapter.Fill(this.mRhachmoudformDataSet.Etudiant);
             btn_Ajout.Enabled = true;
             btn_annuler.Enabled = false;
             btn_modif.Enabled = false;
@@ -70,9 +71,7 @@ private void lbl_nom_Load(object sender, EventArgs e)
 
         private void btn_supprimer_Click(object sender, EventArgs e)
         {
-            condition = recherche.Text;
-            string requete1 = "SELECT id FROM Etudiant" ;
-            int row = cmd.ExecuteReader(requete1);
+/*
             btn_Ajout.Enabled = false;
             btn_supprimer.Enabled = false;
             btn_annuler.Enabled = false;
@@ -82,12 +81,12 @@ private void lbl_nom_Load(object sender, EventArgs e)
             textBox1.Enabled = true;
             textBox2.Enabled = true;
             
-            MessageBoxButtons boutton = MessageBoxButtons.YesNo;
+          /*  MessageBoxButtons boutton = MessageBoxButtons.YesNo;
             DialogResult resultat = MessageBox.Show("Continuer", "non", boutton);
             if (resultat == DialogResult.Yes)
             {
                 requete = "DELETE FROM Etudiant ";
-                cmd = new MySqlCommand(requete,conn);
+                cmd = new SqlCommand(requete,conn);
                 try
                 {
                     conn.Open();
@@ -113,7 +112,7 @@ private void lbl_nom_Load(object sender, EventArgs e)
                 recherche.Enabled = true;
                 textBox1.Enabled = false;
                 textBox2.Enabled = false;
-            }
+            }*/
         }
 
         private void btn_annuler_Click(object sender, EventArgs e)
@@ -140,6 +139,17 @@ private void lbl_nom_Load(object sender, EventArgs e)
             textBox2.Enabled = true;
         }
 
-        
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.etudiantTableAdapter.FillBy(this.mRhachmoudformDataSet.Etudiant);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }
